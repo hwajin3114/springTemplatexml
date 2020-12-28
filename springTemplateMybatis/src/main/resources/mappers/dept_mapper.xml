@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- DeptMapper : interface -->
+<mapper namespace="com.company.app.emp.service.impl.DeptMapper">
+	<!-- id : 메서드명이 입력된다. resultType : dept VO에 저장할거다.
+	
+		reslutType에 com.company.app.emp.service.Dept로 쓰기 기니까 dept로만 적고 싶어 -->
+	<select id="getDeptList"
+		resultType="dept">
+		SELECT * FROM DEPARTMENTS
+	</select>
+
+	<!-- parameterType="com.company.app.emp.service.Dept"
+		 where절에 placeholder 하나면  꼭 필드명 안해주고 그냥 vlaue로 해서 받아와도 된다. -->
+	<select id="getDept"
+		parameterType="com.company.app.emp.service.Dept"
+		resultType="com.company.app.emp.service.Dept">
+		SELECT *
+		FROM DEPARTMENTS
+		WHERE DEPARTMENT_ID = #{departmentid}
+	</select>
+</mapper>
